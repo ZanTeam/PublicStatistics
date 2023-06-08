@@ -118,4 +118,3 @@ MultipleConstructors_Issue,1
 UninitializedFunctionPointerInConstructor_Issue,2
 NestedStructInPublicMap_Issue,1
 VariableCanBeImmutable_Issue,2
-TOTAL,470

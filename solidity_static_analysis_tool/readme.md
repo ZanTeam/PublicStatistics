@@ -1,5 +1,21 @@
 # Solidity Static Analysis Tool
-ZAN (https://zan.top/home) has released the benchmark of its solidity static analysis tool, and the contracts source code can be seen in the ```contracts``` directory. The specific location of the risk point is marked in detail in the contract. What's more, we list the specific descriptions and suggestions of each rule in detail below, and count the number of risk points in corresponding contracts, which can be viewed in the table ```rule_risk-point-num.csv```.
+ZAN (https://zan.top/home) has released the benchmark of its solidity static analysis tool, and the contracts source code can be seen in the ```contracts``` directory. The specific location of the risk point is marked in detail in the contract. What's more, we list the specific descriptions and suggestions of each rule in detail below. 
+
+We count the number of risk points in corresponding contracts under the ```contracts``` directory, the number of detected risk points for each category and level is as follows. And the number of risk points detected by each rule can be seen in the table ```rule_risk-point-num.csv```.
+| **Category**                | **High** | **Medium** | **Low** | **Informational** | **Total**  |
+|:---------------------------:|:--------:|:----------:|:-------:|:-----------------:|:----------:|
+| **Code Security**           | 49       | 42         | 44      | 7                 | 142        |
+| **Optimization Suggestion** | 0        | 0          | 12      | 316               | 328        |
+| **Total**                   | 49       | 42         | 56      | 323               | 470        |
+
+We randomly selected 27 projects which already have final audit reports from the well-known audit platform code4rena (https://code4rena.com/), and detected these 27 projects with ZAN's solidity static analysis tool and the open source solidity static analysis tool Slither (https://github.com/crytic/slither). We use code4rena's final audit report as a benchmark to compare the detection capabilities of these two tools for High, Medium, and Low level vulnerabilities. The overall comparison results of the two are as follows (The column ```code4rena Report``` represents the number of vulnerabilities that the tool can detect.). For more detailed information, please refer to table ```code4rena_project_detect_result.xlsx```.
+| **Level**  | **code4rena Report** | **ZAN** | **Slither** | **Detection Rate of ZAN** | **Detection Rate of Slither**  |
+|:----------:|:-------------------:|:-------:|:-----------:|:-------------------------:|:------------------------------:|
+| **High**   | 22                  | 11      | 3           | 50.00%                    | 13.64%                         |
+| **Medium** | 46                  | 10      | 10          | 23.91%                    | 21.74%                         |
+| **Low**    | 143                 | 61      | 41          | 43.36%                    | 28.67%                         |
+
+For rules of gas optimization category, ZAN's static analysis tool has about 20 more rules than Slither, so we only randomly selected 5 projects from code4rena to compare the detection capabilities of these two tools in terms of gas optimization. Also using code4rena's final report as a benchmark, the result is that ZAN gave 25 suggestions for gas optimization, while Slither only gave 3.
 # Rules Description
 We divide the rules into two categories: Code Security and Optimization Suggestion. Code Security includes general vulnerabilities and compiler bugs, and Optimization Suggestion includes code conventions and gas optimization. A detailed description of the rules is as follows.
 ## Code Security
@@ -1078,3 +1094,13 @@ It is recommended to remove redundant state variable writes.
 The solidity compiler of version 0.6.5 introduces immutable to modify state variables that are only modified in the constructor. Using immutable can save gas.
 #### Recommendation
 For contracts compiled with compiler of versions 0.6.5 and above, if the state variable is only modified in the constructor, it is recommended to modify the variable with immutable to save gas.
+# Reference
+Zhuo Zhang, Brian Zhang, Wen Xu, Zhiqiang Lin, "Demystifying Exploitable Bugs in Smart Contracts." In Proceedings of the 45th International Conference on Software Engineering, 2023.
+
+When detecting the projects on code4rena, we used the project numbers, contract source code and final reports sorted out in the above papers for reference.
+<style>
+table
+{
+    margin: auto;
+}
+</style>
