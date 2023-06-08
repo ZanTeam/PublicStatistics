@@ -1098,9 +1098,3 @@ For contracts compiled with compiler of versions 0.6.5 and above, if the state v
 Zhuo Zhang, Brian Zhang, Wen Xu, Zhiqiang Lin, "Demystifying Exploitable Bugs in Smart Contracts." In Proceedings of the 45th International Conference on Software Engineering, 2023.
 
 When detecting the projects on code4rena, we used the project numbers, contract source code and final reports sorted out in the above papers for reference.
-<style>
-table
-{
-    margin: auto;
-}
-</style>
