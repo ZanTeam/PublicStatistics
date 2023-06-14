@@ -12,8 +12,8 @@ We randomly selected 27 projects which already have final audit reports from the
 | **Level**  | **code4rena Report** | **ZAN** | **Slither** | **Detection Rate of ZAN** | **Detection Rate of Slither**  |
 |:----------:|:-------------------:|:-------:|:-----------:|:-------------------------:|:------------------------------:|
 | **High**   | 22                  | 11      | 3           | 50.00%                    | 13.64%                         |
-| **Medium** | 46                  | 10      | 10          | 23.91%                    | 21.74%                         |
-| **Low**    | 143                 | 61      | 41          | 43.36%                    | 28.67%                         |
+| **Medium** | 46                  | 11      | 10          | 23.91%                    | 21.74%                         |
+| **Low**    | 143                 | 63      | 41          | 44.06%                    | 28.67%                         |
 
 For rules of gas optimization category, ZAN's static analysis tool has about 20 more rules than Slither, so we only randomly selected 5 projects from code4rena to compare the detection capabilities of these two tools in terms of gas optimization. Also using code4rena's final report as a benchmark, the result is that ZAN gave 25 suggestions for gas optimization, while Slither only gave 3.
 # Rules Description
